@@ -18,5 +18,8 @@
   "preferGlobal": "true",
   "directories": {
     "bin": "./bin"
+  },
+  "dependencies": {
+    "xdiff": "^0.2.11"
   }
 }
