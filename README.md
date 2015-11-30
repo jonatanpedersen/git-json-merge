@@ -1,0 +1,1 @@
+# git-json-merge
