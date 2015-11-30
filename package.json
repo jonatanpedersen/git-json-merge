@@ -10,7 +10,7 @@
     "url": "git+https://github.com/jonatanpedersen/git-json-merge.git"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/jonatanpedersen/git-json-merge/issues"
   },
