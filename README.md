@@ -1,12 +1,10 @@
 # git-json-merge
-A git merge driver for json files inspired by [git-po-merge](https://github.com/beck/git-po-merge).
+A git merge driver that use [xdiff](https://github.com/dominictarr/xdiff) to automatically resolve merge conflicts in json files. This project was inspired by [git-po-merge](https://github.com/beck/git-po-merge).
 
 ## Install
-
 This can be done one of two ways, globally or per-project/directory:
 
 ### Globally
-
 Install:
 ```sh
 npm install --global git-json-merge
@@ -49,15 +47,15 @@ var xdiff = require('xdiff');
 
 var oursFileName = process.argv[2];
 var baseFileName = process.argv[3];
-var theirsFileName =process.argv[4];
+var theirsFileName = process.argv[4];
 var ours = JSON.parse(fs.readFileSync(oursFileName, 'utf-8'));
 var base = JSON.parse(fs.readFileSync(baseFileName, 'utf-8'));
 var theirs = JSON.parse(fs.readFileSync(theirsFileName, 'utf-8'));
 var diff = xdiff.diff3(theirs, base, ours);
-var newBase = xdiff.patch(base, diff);
-var newBaseJSON = JSON.stringify(newBase, true, 4);
+var newOurs = xdiff.patch(base, diff);
+var newOursJSON = JSON.stringify(newOurs, true, 4);
 
-fs.writeFileSync(oursFileName, newBaseJSON, 'utf-8');
+fs.writeFileSync(oursFileName, newOursJSON, 'utf-8');
 ```
 
 Helpful docs:
