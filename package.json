@@ -3,8 +3,7 @@
   "version": "0.3.4",
   "description": "a git merge driver for json files",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "publish": "dos2unix --d2u bin/git-json-merge && npm publish"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
