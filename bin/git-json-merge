@@ -1,2 +1,8 @@
 #!/usr/bin/env node
-require('./../lib/git-json-merge.js');
+var gitJsonMerge = require('./../lib/git-json-merge.js');
+
+var oursFileName = process.argv[2];
+var baseFileName = process.argv[3];
+var theirsFileName = process.argv[4];
+
+gitJsonMerge.mergeJsonFiles(oursFileName, baseFileName, theirsFileName);
