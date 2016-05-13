@@ -7,13 +7,13 @@ describe('gitJsonMerge', function () {
 	var bar = { bar: 'bar' };
 	var fooBar = { foo: 'foo', bar: 'bar' };
 
-	describe('merge', function () {
-		describeMergeTest(foo, foo, foo, foo);
-		describeMergeTest(foo, foo, bar, bar);
-		describeMergeTest(fooBar, foo, foo, fooBar);
-		describeMergeTest(fooBar, foo, bar, bar);
-		describeMergeTest(bar, fooBar, bar, bar);
-		describeMergeTest(bar, fooBar, fooBar, bar);
+	describe('mergeJson', function () {
+		describeMergeJsonTest(foo, foo, foo, foo);
+		describeMergeJsonTest(foo, foo, bar, bar);
+		describeMergeJsonTest(fooBar, foo, foo, fooBar);
+		describeMergeJsonTest(fooBar, foo, bar, bar);
+		describeMergeJsonTest(bar, fooBar, bar, bar);
+		describeMergeJsonTest(bar, fooBar, fooBar, bar);
 	});
 
 	describe('selectIndent', function () {
@@ -38,14 +38,14 @@ function repeatCharacter (character, count) {
 	return new Array(count + 1).join(character);
 }
 
-function describeMergeTest (ours, base, theirs, expected) {
-	ours = clone(ours);
-	base = clone(base);
-	theirs = clone(theirs);
-	expected = clone(expected);
+function describeMergeJsonTest (ours, base, theirs, expected) {
+	ours = toString(clone(ours));
+	base = toString(clone(base));
+	theirs = toString(clone(theirs));
+	expected = toString(clone(expected));
 
 	describe('given arguments of ' + toString(ours) + ' as ours, ' + toString(base) + ' as base and '  + toString(theirs) + ' as theirs', function () {
-		var actual = gitJsonMerge.merge(ours, base, theirs);
+		var actual = gitJsonMerge.mergeJson(ours, base, theirs);
 
 		it('should return ' + toString(expected), function () {
 			expect(actual).to.deep.equal(expected);
