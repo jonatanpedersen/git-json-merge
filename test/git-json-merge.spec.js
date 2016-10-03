@@ -7,13 +7,26 @@ describe('gitJsonMerge', function () {
 	var bar = { bar: 'bar' };
 	var fooBar = { foo: 'foo', bar: 'bar' };
 
-	describe('mergeJson', function () {
+	describe('mergeJsonObject', function () {
 		describeMergeJsonTest(foo, foo, foo, foo);
 		describeMergeJsonTest(foo, foo, bar, bar);
 		describeMergeJsonTest(fooBar, foo, foo, fooBar);
 		describeMergeJsonTest(fooBar, foo, bar, bar);
 		describeMergeJsonTest(bar, fooBar, bar, bar);
 		describeMergeJsonTest(bar, fooBar, fooBar, bar);
+	});
+
+	var fooArray = ['banana'];
+	var barArray = ['potatoes'];
+	var fooBarArray = ['banana', 'potatoes'];
+
+	describe('mergeJsonArray', function () {
+		describeMergeJsonTest(fooArray, fooArray, fooArray, fooArray);
+		describeMergeJsonTest(fooArray, fooArray, barArray, barArray);
+		describeMergeJsonTest(fooBarArray, fooArray, fooArray, fooBarArray);
+		describeMergeJsonTest(fooBarArray, fooArray, barArray, barArray);
+		describeMergeJsonTest(barArray, fooBarArray, barArray, barArray);
+		describeMergeJsonTest(barArray, fooBarArray, fooBarArray, barArray);
 	});
 
 	describe('selectIndent', function () {
