@@ -7,13 +7,39 @@ describe('gitJsonMerge', function () {
 	var bar = { bar: 'bar' };
 	var fooBar = { foo: 'foo', bar: 'bar' };
 
-	describe('mergeJson', function () {
+	describe('mergeJsonObject', function () {
 		describeMergeJsonTest(foo, foo, foo, foo);
 		describeMergeJsonTest(foo, foo, bar, bar);
 		describeMergeJsonTest(fooBar, foo, foo, fooBar);
 		describeMergeJsonTest(fooBar, foo, bar, bar);
 		describeMergeJsonTest(bar, fooBar, bar, bar);
 		describeMergeJsonTest(bar, fooBar, fooBar, bar);
+	});
+
+	describe('mergeJsonPrimitivesArray', function () {
+		var fooArray = ['foo'];
+		var barArray = ['bar'];
+		var fooBarArray = ['foo', 'bar'];
+
+		describeMergeJsonTest(fooArray, fooArray, fooArray, fooArray);
+		describeMergeJsonTest(fooArray, fooArray, barArray, barArray);
+		describeMergeJsonTest(fooBarArray, fooArray, fooArray, fooBarArray);
+		describeMergeJsonTest(fooBarArray, fooArray, barArray, barArray);
+		describeMergeJsonTest(barArray, fooBarArray, barArray, barArray);
+		describeMergeJsonTest(barArray, fooBarArray, fooBarArray, barArray);
+	});
+
+	describe('mergeJsonObjectsArray', function () {
+		var fooArray = [{id: 'foo'}];
+		var barArray = [{id: 'bar'}];
+		var fooBarArray = [{id: 'foo'}, {id: 'bar'}];
+
+		describeMergeJsonTest(fooArray, fooArray, fooArray, fooArray);
+		describeMergeJsonTest(fooArray, fooArray, barArray, barArray);
+		describeMergeJsonTest(fooBarArray, fooArray, fooArray, fooBarArray);
+		describeMergeJsonTest(fooBarArray, fooArray, barArray, barArray);
+		describeMergeJsonTest(barArray, fooBarArray, barArray, barArray);
+		describeMergeJsonTest(barArray, fooBarArray, fooBarArray, barArray);
 	});
 
 	describe('selectIndent', function () {

@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "detect-indent": "^4.0.0",
-    "xdiff": "^0.2.11"
+    "xdiff": "github:carlos8f/xdiff"
   },
   "devDependencies": {
     "chai": "^3.5.0",
