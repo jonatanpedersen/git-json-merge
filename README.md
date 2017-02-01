@@ -4,6 +4,7 @@ A git merge driver that use [xdiff](https://github.com/dominictarr/xdiff) to aut
 
 [![Build Status](https://travis-ci.org/jonatanpedersen/git-json-merge.svg?branch=master)](https://travis-ci.org/jonatanpedersen/git-json-merge)
 [![NPM Version](https://img.shields.io/npm/v/git-json-merge.svg)](https://www.npmjs.com/package/git-json-merge)
+[![NSP Status](https://nodesecurity.io/orgs/jonatanpedersen/projects/e2019c42-70f7-40dc-a5b6-92dd87c89544/badge)](https://nodesecurity.io/orgs/jonatanpedersen/projects/e2019c42-70f7-40dc-a5b6-92dd87c89544)
 [![Greenkeeper badge](https://badges.greenkeeper.io/jonatanpedersen/git-json-merge.svg)](https://greenkeeper.io/)
 
 ## Install
