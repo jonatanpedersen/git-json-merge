@@ -1,4 +1,6 @@
 # git-json-merge
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/jonatanpedersen/git-json-merge.svg)](https://greenkeeper.io/)
 A git merge driver that use [xdiff](https://github.com/dominictarr/xdiff) to automatically resolve merge conflicts in json files. It also detects indentation automatically. This project was inspired by [git-po-merge](https://github.com/beck/git-po-merge).
 
 [![Build Status](https://travis-ci.org/jonatanpedersen/git-json-merge.svg?branch=master)](https://travis-ci.org/jonatanpedersen/git-json-merge)
