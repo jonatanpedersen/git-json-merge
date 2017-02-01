@@ -14,17 +14,17 @@
   "bugs": {
     "url": "https://github.com/jonatanpedersen/git-json-merge/issues"
   },
+  "main": "lib/git-json-merge.js",
   "homepage": "https://github.com/jonatanpedersen/git-json-merge#readme",
-  "preferGlobal": "true",
-  "directories": {
-    "bin": "./bin"
+  "bin": {
+    "git-json-merge": "bin/git-json-merge"
   },
   "dependencies": {
-    "detect-indent": "^4.0.0",
+    "detect-indent": "^5.0.0",
     "xdiff": "^0.2.11"
   },
   "devDependencies": {
     "chai": "^3.5.0",
-    "mocha": "^2.4.5"
+    "mocha": "^3.2.0"
   }
 }
