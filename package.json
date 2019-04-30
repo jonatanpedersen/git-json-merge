@@ -22,7 +22,7 @@
     "git-json-merge": "bin/git-json-merge"
   },
   "dependencies": {
-    "detect-indent": "^5.0.0",
+    "detect-indent": "^6.0.0",
     "xdiff": "^0.2.11"
   },
   "devDependencies": {
