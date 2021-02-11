@@ -23,11 +23,11 @@
   },
   "dependencies": {
     "detect-indent": "^6.0.0",
-    "mocha": "^7.2.0",
     "xdiff": "^0.2.11"
   },
   "devDependencies": {
-    "chai": "^4.3.0"
+    "chai": "^4.3.0",
+    "mocha": "^6.2.3"
   },
   "engines": {
     "node": ">=8"
