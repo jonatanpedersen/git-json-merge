@@ -1,0 +1,27 @@
+version: 2.1
+
+workflows:
+  main:
+    jobs:
+      - test:
+          version: 6
+      - test:
+          version: 8
+      - test:
+          version: 10
+
+jobs:
+  test:
+    parameters:
+      version:
+        type: string
+    docker:
+      - image: circleci/node:<< parameters.version >>
+    steps:
+      - checkout
+      - run:
+          name: "NPM Install"
+          command: npm install
+      - run:
+          name: "NPM Test"
+          command: npm test
