@@ -4,11 +4,11 @@ workflows:
   main:
     jobs:
       - test:
-          version: 6
+          version: "6"
       - test:
-          version: 8
+          version: "8"
       - test:
-          version: 10
+          version: "10"
 
 jobs:
   test:
