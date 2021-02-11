@@ -4,8 +4,6 @@ workflows:
   main:
     jobs:
       - test:
-          version: "4"
-      - test:
           version: "6"
       - test:
           version: "8"
