@@ -24,6 +24,14 @@ describe('gitJsonMerge', function () {
 		describeSelectIndentTest(2, 2, 4, 4);
 		describeSelectIndentTest(2, 4, 4, 2);
 	});
+
+	describe('stripBom', function () {
+		describeStripBomTest('[{"id":1,"field":"Foo"}]', '[{"id":1,"field":"Foo"}]');
+		describeStripBomTest('\uFEFF[{"id":1,"field":"Foo"}]', '[{"id":1,"field":"Foo"}]');
+		describeStripBomTest('[{"id":1,"field":"Foo"}]\uFEFF', '[{"id":1,"field":"Foo"}]\uFEFF');
+		describeStripBomTest('[{"id":1,\uFEFF"field":"Foo"}]', '[{"id":1,\uFEFF"field":"Foo"}]');
+		describeStripBomTest('\uFEFF[{"id":1,"field":"Foo"}]\uFEFF', '[{"id":1,"field":"Foo"}]\uFEFF');
+	});
 });
 
 function toString (object) {
@@ -63,6 +71,16 @@ function describeSelectIndentTest (ours, base, theirs, expected) {
 	describe('given arguments of ' + ours.length + ' as ours, ' + base.length + ' as base and '  + theirs.length + ' as theirs', function () {
 		var actual = gitJsonMerge.selectIndent(ours, base, theirs);
 		it('should return ' + expected.length, function () {
+			expect(actual).to.equal(expected);
+		})
+	});
+}
+
+function describeStripBomTest (str, expected)  {
+	describe('given arguments of ' + str.replace('\uFEFF', '<BOM>') + ' as str', function () {
+		var actual = gitJsonMerge.stripBom(str);
+
+		it('should return ' + expected.replace('\uFEFF', '<BOM>'), function () {
 			expect(actual).to.equal(expected);
 		})
 	});
