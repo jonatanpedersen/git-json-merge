@@ -25,7 +25,7 @@ jobs:
       version:
         type: string
     docker:
-      - image: circleci/node:<< parameters.version >>
+      - image: cimg/node:<< parameters.version >>
     steps:
       - checkout
       - run:
