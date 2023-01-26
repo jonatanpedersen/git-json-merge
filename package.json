@@ -1,6 +1,6 @@
 {
   "name": "git-json-merge",
-  "version": "0.4.5",
+  "version": "1.0.0",
   "description": "a git merge driver for json files",
   "scripts": {
     "postversion": "git push && git push --tags",
