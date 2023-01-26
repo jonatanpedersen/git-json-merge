@@ -4,21 +4,13 @@ workflows:
   main:
     jobs:
       - test:
-          version: "6"
+          version: "14.21"
       - test:
-          version: "8"
+          version: "16.19"
       - test:
-          version: "10"
+          version: "18.13"
       - test:
-          version: "12"
-      - test:
-          version: "14"
-      - test:
-          version: "16"
-      - test:
-          version: "18"
-      - test:
-          version: "19"
+          version: "19.5"
 jobs:
   test:
     parameters:
