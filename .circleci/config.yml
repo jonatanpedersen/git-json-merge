@@ -13,7 +13,12 @@ workflows:
           version: "12"
       - test:
           version: "14"
-
+      - test:
+          version: "16"
+      - test:
+          version: "18"
+      - test:
+          version: "19"
 jobs:
   test:
     parameters:
