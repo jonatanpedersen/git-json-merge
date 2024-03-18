@@ -16,13 +16,13 @@ describe('gitJsonMerge', function () {
 		describeMergeJsonTest(bar, fooBar, fooBar, bar);
 	});
 
-	describe('selectIndent', function () {
-		describeSelectIndentTest(4, 2, 2, 4);
-		describeSelectIndentTest(4, 4, 2, 2);
-		describeSelectIndentTest(4, 4, 4, 4);
-		describeSelectIndentTest(2, 4, 2, 2);
-		describeSelectIndentTest(2, 2, 4, 4);
-		describeSelectIndentTest(2, 4, 4, 2);
+	describe('selectVersion', function () {
+		describeSelectVersionTest(4, 2, 2, 4);
+		describeSelectVersionTest(4, 4, 2, 2);
+		describeSelectVersionTest(4, 4, 4, 4);
+		describeSelectVersionTest(2, 4, 2, 2);
+		describeSelectVersionTest(2, 2, 4, 4);
+		describeSelectVersionTest(2, 4, 4, 2);
 	});
 
 	describe('stripBom', function () {
@@ -61,7 +61,7 @@ function describeMergeJsonTest (ours, base, theirs, expected) {
 	});
 }
 
-function describeSelectIndentTest (ours, base, theirs, expected) {
+function describeSelectVersionTest (ours, base, theirs, expected) {
 	var character = ' ';
 	ours = repeatCharacter(character, ours);
 	base = repeatCharacter(character, base);
@@ -69,7 +69,7 @@ function describeSelectIndentTest (ours, base, theirs, expected) {
 	expected = repeatCharacter(character, expected);
 
 	describe('given arguments of ' + ours.length + ' as ours, ' + base.length + ' as base and '  + theirs.length + ' as theirs', function () {
-		var actual = gitJsonMerge.selectIndent(ours, base, theirs);
+		var actual = gitJsonMerge.selectVersion(ours, base, theirs);
 		it('should return ' + expected.length, function () {
 			expect(actual).to.equal(expected);
 		})
