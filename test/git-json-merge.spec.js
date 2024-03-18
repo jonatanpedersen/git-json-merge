@@ -33,6 +33,20 @@ describe('gitJsonMerge', function () {
 		});
 	});
 
+	describe('detectTrailingNewline', function () {
+		it('returns \\r\\n for Windows-style newlines', function () {
+			expect(gitJsonMerge.detectTrailingNewline('string\r\n')).to.equal('\r\n');
+		});
+
+		it('returns \\n for Unix-style newlines', function () {
+			expect(gitJsonMerge.detectTrailingNewline('string\n')).to.equal('\n');
+		});
+
+		it('returns an empty string without trailing newline', function () {
+			expect(gitJsonMerge.detectTrailingNewline('string')).to.equal('');
+		});
+	});
+
 	describe('stripBom', function () {
 		describeStripBomTest('[{"id":1,"field":"Foo"}]', '[{"id":1,"field":"Foo"}]');
 		describeStripBomTest('\uFEFF[{"id":1,"field":"Foo"}]', '[{"id":1,"field":"Foo"}]');
