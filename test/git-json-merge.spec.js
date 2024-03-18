@@ -16,13 +16,35 @@ describe('gitJsonMerge', function () {
 		describeMergeJsonTest(bar, fooBar, fooBar, bar);
 	});
 
-	describe('selectIndent', function () {
-		describeSelectIndentTest(4, 2, 2, 4);
-		describeSelectIndentTest(4, 4, 2, 2);
-		describeSelectIndentTest(4, 4, 4, 4);
-		describeSelectIndentTest(2, 4, 2, 2);
-		describeSelectIndentTest(2, 2, 4, 4);
-		describeSelectIndentTest(2, 4, 4, 2);
+	describe('selectVersion', function () {
+		describeSelectVersionTest(4, 2, 2, 4);
+		describeSelectVersionTest(4, 4, 2, 2);
+		describeSelectVersionTest(4, 4, 4, 4);
+		describeSelectVersionTest(2, 4, 2, 2);
+		describeSelectVersionTest(2, 2, 4, 4);
+		describeSelectVersionTest(2, 4, 4, 2);
+	});
+
+	describe('mapAndSelect', function () {
+		it('calls the function with the arguments and selects the result', function () {
+			var repeatX = (count) => repeatCharacter('x', count);
+
+			expect(gitJsonMerge.mapAndSelect(repeatX, 4, 2, 2)).to.equal('xxxx');
+		});
+	});
+
+	describe('detectTrailingNewline', function () {
+		it('returns \\r\\n for Windows-style newlines', function () {
+			expect(gitJsonMerge.detectTrailingNewline('string\r\n')).to.equal('\r\n');
+		});
+
+		it('returns \\n for Unix-style newlines', function () {
+			expect(gitJsonMerge.detectTrailingNewline('string\n')).to.equal('\n');
+		});
+
+		it('returns an empty string without trailing newline', function () {
+			expect(gitJsonMerge.detectTrailingNewline('string')).to.equal('');
+		});
 	});
 
 	describe('stripBom', function () {
@@ -61,7 +83,7 @@ function describeMergeJsonTest (ours, base, theirs, expected) {
 	});
 }
 
-function describeSelectIndentTest (ours, base, theirs, expected) {
+function describeSelectVersionTest (ours, base, theirs, expected) {
 	var character = ' ';
 	ours = repeatCharacter(character, ours);
 	base = repeatCharacter(character, base);
@@ -69,7 +91,7 @@ function describeSelectIndentTest (ours, base, theirs, expected) {
 	expected = repeatCharacter(character, expected);
 
 	describe('given arguments of ' + ours.length + ' as ours, ' + base.length + ' as base and '  + theirs.length + ' as theirs', function () {
-		var actual = gitJsonMerge.selectIndent(ours, base, theirs);
+		var actual = gitJsonMerge.selectVersion(ours, base, theirs);
 		it('should return ' + expected.length, function () {
 			expect(actual).to.equal(expected);
 		})
