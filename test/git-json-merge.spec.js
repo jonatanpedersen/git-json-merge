@@ -25,6 +25,14 @@ describe('gitJsonMerge', function () {
 		describeSelectVersionTest(2, 4, 4, 2);
 	});
 
+	describe('mapAndSelect', function () {
+		it('calls the function with the arguments and selects the result', function () {
+			var repeatX = (count) => repeatCharacter('x', count);
+
+			expect(gitJsonMerge.mapAndSelect(repeatX, 4, 2, 2)).to.equal('xxxx');
+		});
+	});
+
 	describe('stripBom', function () {
 		describeStripBomTest('[{"id":1,"field":"Foo"}]', '[{"id":1,"field":"Foo"}]');
 		describeStripBomTest('\uFEFF[{"id":1,"field":"Foo"}]', '[{"id":1,"field":"Foo"}]');
